@@ -1,0 +1,28 @@
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../css/light-bootstrap-dashboard.css";
+@import "../css/sweetalert.css";
+
+* {
+  font-family: "微軟正黑體";
+}
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.three{
+  padding-left: 30px;
+}
+.sidebar .nav [data-toggle="collapse"] ~ div > ul > li > a, .off-canvas-sidebar .nav [data-toggle="collapse"] ~ div > ul > li > a
+{
+  padding-left: 30px;
+}
+
+.panel-default > .panel-heading {
+  border-color:#091358 !important;
+}
