@@ -19,7 +19,7 @@
                     <div class="form-group {{ $errors->has('body') ? 'has-error':''}}">
                         <!-- 編輯器容器 -->
                         <label for="title">最新消息內容</label>
-                        <textarea id="container" name="body" style="height: 200px">{!! old('body') !!}</textarea >
+                        <textarea id="content" name="body" style="height: 200px">{!! old('body') !!}</textarea >
                         @if($errors->has('body'))
                             <span class="help-block">
                             <strong>{{$errors->first('body')}}</strong>

@@ -183,7 +183,7 @@
         });
 
         function setUeditor() {
-            if($('#container').length > 0)
+            if($('#content').length > 0)
             {
                 UE.delEditor('content');
                 UE.getEditor('content',
