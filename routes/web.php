@@ -26,6 +26,7 @@ Route::prefix('admin')->name('admin.')->group(function ($routes){
     $routes->delete('/user/destroy','Admin\UsersController@destroy')->name('user.destroy');
 });
 
+
 /* Error Page*/
 Route::get('401','ErrorPageController@Error401');
 Route::get('402','ErrorPageController@Error402');
