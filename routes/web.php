@@ -24,6 +24,8 @@ Route::prefix('admin')->name('admin.')->group(function ($routes){
     $routes->delete('/module/destroy','Admin\ModuleController@destroy')->name('module.destroy');
     $routes->resource('/user','Admin\UsersController',['only' => ['index','edit','update','create','store']]);
     $routes->delete('/user/destroy','Admin\UsersController@destroy')->name('user.destroy');
+    $routes->resource('/question','Admin\QuestionController',['only' => ['index','edit','update','create','store']]);
+    $routes->delete('/question/destroy','Admin\QuestionController@destroy')->name('question.destroy');
 });
 
 

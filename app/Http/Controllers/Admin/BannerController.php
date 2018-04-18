@@ -11,6 +11,7 @@ use App\Module;
 
 class BannerController extends Controller
 {
+    //1280X437
     public $banner;
     public $repository;
     public $uploader;
@@ -48,9 +49,9 @@ class BannerController extends Controller
         $data = [
             'module_id' => request('module_id'),
         ];
-        if($request->banner_image)
+        if($request->image)
         {
-            if($result = $this->uploader->save($request->banner_image,'banners',rand(1000,9999),360))
+            if($result = $this->uploader->save($request->image,'banners',rand(1000,9999),360))
             {
                 $data['image'] = $result['path'];
             }
@@ -71,9 +72,9 @@ class BannerController extends Controller
         $data = [
             'module_id' => request('module_id'),
         ];
-        if($request->banner_image)
+        if($request->image)
         {
-            if($result = $this->uploader->save($request->banner_image,'banners',rand(1000,9999),360))
+            if($result = $this->uploader->save($request->image,'banners',rand(1000,9999),360))
             {
                 $data['image'] = $result['path'];
             }

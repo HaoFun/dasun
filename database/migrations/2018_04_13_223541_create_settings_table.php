@@ -21,8 +21,12 @@ class CreateSettingsTable extends Migration
             $table->string('config_email')->nullable();
             $table->string('config_fax')->nullable();
             $table->string('config_house')->nullable();
+            $table->text('config_info')->nullable();
             $table->text('description')->nullable();
             $table->text('keywords')->nullable();
+            $table->string('config_image')->nullable();
+            $table->string('config_image_title')->nullable();
+            $table->text('config_ad_image')->nullable();
             $table->timestamps();
         });
     }

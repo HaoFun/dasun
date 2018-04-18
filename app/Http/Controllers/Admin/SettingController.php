@@ -9,6 +9,7 @@ use App\Setting;
 
 class SettingController extends Controller
 {
+    //1280X360
     protected $repository;
     protected $setting;
     public function __construct(AdminRepository $repository,Setting $setting)
