@@ -22,7 +22,7 @@
                         <label for="image">Image</label>
                         @if($banner->image)
                             <br>
-                            <img class="thumbnail img-responsive" src="{{ $banner->image }}" height="50px" alt="{{ $banner->module->name.'-image' }}">
+                            <img class="thumbnail img-responsive" src="{{ $banner->image }}" style="height:200px;max-width:100%" alt="{{ $banner->module->name.'-image' }}">
                         @endif
                         <input type="file" id="image" name="banner_image" class="btn btn-default form-control">
                     </div>
