@@ -15,8 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'fullname', 'email', 'password', 'company_name', 'phone', 'address', 'account_balance',
-        'account_avail_balance', 'high_value_threshold', 'confirmation_code', 'combined_shipment_srv'
+        'name', 'email', 'password',
     ];
 
     /**
@@ -32,5 +31,10 @@ class User extends Authenticatable
     public function getCreatedAtAttribute()
     {
         return Carbon::parse($this->attributes['created_at'])->toDateString();
+    }
+
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
     }
 }

@@ -7,6 +7,7 @@
                 <form action="{{ route('admin.banner.update',$banner->id) }}" method="post" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                     {{ method_field('PATCH') }}
+
                     <div class="form-group">
                         <label for="module_id">Module Title</label>
                         <select class="form-control" name="module_id" id="module_id" required>

@@ -2,9 +2,9 @@
 @section('content')
     <div class="content-body">
         <div class="panel panel-default">
-            <div class="panel-heading">Add Image</div>
+            <div class="panel-heading">Add Module</div>
             <div class="panel-body">
-                <form action="{{ route('admin.banner.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.module.store') }}" method="post" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                     <div class="form-group">
                         <label for="module_id">Module Title</label>

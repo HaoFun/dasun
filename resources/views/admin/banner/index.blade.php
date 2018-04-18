@@ -4,7 +4,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">Image</div>
             <div>
-                <button class="btn btn-danger pull-right col-md-2 delete_all" style="margin: 10px 5px 10px 0" type="button" data-url="{{ route('admin.banner.destroy') }}" data-ajax="{{ route('admin.news.index') }}">Delete</button>
+                <button class="btn btn-danger pull-right col-md-2 delete_all" style="margin: 10px 5px 10px 0" type="button" data-url="{{ route('admin.banner.destroy') }}" data-ajax="{{ route('admin.banner.index') }}">Delete</button>
             </div>
             <a role="ajax" href="{{ route('admin.banner.create') }}" style="margin: 10px 5px 10px 0" class="btn btn-primary pull-right col-md-2">Create</a>
             <div class="panel-body">
