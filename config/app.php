@@ -170,7 +170,6 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Overtrue\LaravelUEditor\UEditorServiceProvider::class,
-        Laracasts\Flash\FlashServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,

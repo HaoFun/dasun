@@ -26,3 +26,27 @@
 .panel-default > .panel-heading {
   border-color:#091358 !important;
 }
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: #000000;
+  background-color: #000000;
+}
+
+.container > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-header, .container-fluid > .navbar-collapse {
+  background-color: #000000;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.container-fluid {
+  padding-left:0px;
+  padding-right:0px;
+}
+
+.navbar-default {
+  border-color: #000000;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color:#ffffff;
+}

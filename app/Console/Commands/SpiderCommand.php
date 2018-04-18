@@ -6,6 +6,7 @@ use App\News;
 use Illuminate\Console\Command;
 use Goutte\Client;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class SpiderCommand extends Command
 {
@@ -68,15 +69,15 @@ class SpiderCommand extends Command
                     {
                         $from_explode = explode("　",$from);
                         $data = [
-                            'title'   => $title,
-                            'type'    => $type_name,
-                            'from'    => isset($from_explode) && count($from_explode) === 2 ? $from_explode[0]:null,
-                            'from_url'   => $from_url,
+                            'title'        => $title,
+                            'type'         => $type_name,
+                            'from'         => isset($from_explode) && count($from_explode) === 2 ? $from_explode[0]:null,
+                            'from_url'     => $from_url,
                             'from_publish' => isset($from_explode) && count($from_explode) === 2 ? $from_explode[1]:null,
-                            'content' => $article->filterXPath('div[@id="article"]/div[2]')->text(),
-                            'publish_at'    => isset($find_date) ? str_replace($find_date,(int)$find_date + 1911,$resultDate[0]):Carbon::now()->toDateString()
+                            'content'      => $article->filterXPath('div[@id="article"]/div[2]')->text(),
+                            'publish_at'   => isset($find_date) ? str_replace($find_date,(int)$find_date + 1911,$resultDate[0]):Carbon::now()->toDateString()
                         ];
-                        News::create($data);
+                        DB::table('news')->insert($data);
                         $this->info("{$title}爬取成功!");
                     }
                 }

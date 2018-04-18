@@ -24,7 +24,21 @@ class SettingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'config_name'    => 'required|min:3',
+            'config_phone'   => 'required',
+            'config_address' => 'required',
+            'config_email'   => 'required|email',
+            'config_fax'     => 'required',
+            'config_house'   => 'required',
+            'description'    => 'required|min:3',
+            'keywords'       => 'required|min:3'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+
         ];
     }
 }

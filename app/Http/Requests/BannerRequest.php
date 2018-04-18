@@ -23,8 +23,17 @@ class BannerRequest extends FormRequest
      */
     public function rules()
     {
+        //upload file size max : 10mb
         return [
-            //
+            'module_id' => 'required|integer',
+            'image'     => 'required|image|mimes::jpg,png,jpeg,gif|max:10240|dimensions:min_width=200,min_height=200'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+
         ];
     }
 }

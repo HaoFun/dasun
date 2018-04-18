@@ -8544,7 +8544,7 @@ tbody.collapse.in {
 
 @media (min-width: 768px) {
   .navbar {
-    border-radius: 4px;
+    border-radius: 0px;
   }
 }
 
@@ -8897,8 +8897,8 @@ tbody.collapse.in {
 
 .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
   margin-bottom: 0;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -8950,7 +8950,7 @@ tbody.collapse.in {
 
 .navbar-default {
   background-color: #fff;
-  border-color: #d3e0e9;
+  border-color: #000000;
 }
 
 .navbar-default .navbar-brand {
@@ -8992,7 +8992,7 @@ tbody.collapse.in {
 }
 
 .navbar-default .navbar-toggle {
-  border-color: #181D3B;
+  border-color: #ffffff;
 }
 
 .navbar-default .navbar-toggle:hover,
@@ -9001,12 +9001,12 @@ tbody.collapse.in {
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #181D3B;
+  background-color: #ffffff;
 }
 
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #d3e0e9;
+  border-color: #000000;
 }
 
 .navbar-default .navbar-nav > .open > a,
@@ -11632,5 +11632,33 @@ button.close {
 
 .panel-default > .panel-heading {
   border-color: #091358 !important;
+}
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #000000;
+  background-color: #000000;
+}
+
+.container > .navbar-header,
+.container > .navbar-collapse,
+.container-fluid > .navbar-header,
+.container-fluid > .navbar-collapse {
+  background-color: #000000;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.navbar-default {
+  border-color: #000000;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #ffffff;
 }
 

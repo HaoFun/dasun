@@ -11,6 +11,7 @@
     <meta name="description" content="@yield('description','Dasun')">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app" class="wrapper">
@@ -18,7 +19,7 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a role="ajax" href="{{ url('/') }}" class="simple-text">
-                    <img width="200px" src="{{ asset('images/LOGO.png') }}" alt="Logo">
+                    <img width="200px" src="{{ asset('images/logo_erp.png') }}" alt="Logo">
                 </a>
             </div>
             <ul class="nav nav-sidebar">
@@ -38,18 +39,18 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img style="margin-top: -8px;height: 40px" src="{{ asset('images/LOGO-02.png') }}" alt="ERP">
+                        <img style="margin-top: -8px;height: 40px" src="{{ asset('images/logo_erp.png') }}" alt="ERP">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">登入</a></li>
-                            <li><a href="{{ route('register') }}">註冊</a></li>
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
                         @endif
                         @if(Auth::check())
                             <li>
-                                <a class="text-center" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i><b>登出</b></a>
+                                <a class="text-center" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i><b>Logout</b></a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
@@ -88,6 +89,8 @@
     </div>
 </div>
 <script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ mix('js/moment.js') }}"></script>
+<script src="{{ mix('js/bootstrap-datetimepicker.min.js') }}"></script>
 @yield('js')
 @include('vendor.ueditor.assets')
 @include('vendor.sweet.alert')
@@ -95,12 +98,12 @@
     (function () {
         $( document).ready( function() {
             setUeditor();
-            //alert change swal
+            //alert message use swal
             window.alert = function() { return swal.apply(this, arguments); };
-            $('div.alert').not('.alert-important').delay(1000).fadeOut(1000);
+            $('div.alert').not('.alert-important').delay(5000).fadeOut(1000);
 
-            //delete all toggle
-            $(document).on('change','.checktoggle',function () {
+            //delete all checkbox toggle
+            $(document).on('change','.delete_toggle',function () {
                 if($(this).is(":checked"))
                 {
                     $(".delete_list").each(function() {
@@ -115,7 +118,7 @@
                 }
             });
 
-            //delete all choose checked
+            //delete all checkbox check
             $(document).on('click','.delete_all', function(e) {
                 var delete_ids = [];
                 $(".delete_list:checked").each(function() {
@@ -127,7 +130,7 @@
                 if(delete_ids.length <=0)
                 {
                     swal({
-                        title: "請選擇一個刪除項目.",
+                        title: "請選擇一個刪除項目",
                         type: "error",
                         timer: 2000
                     })
@@ -144,7 +147,6 @@
                             closeOnConfirm: true
                         },
                         function() {
-                            delete_ids = delete_ids.join(",");
                             $.ajax({
                                 url: $('.delete_all').data('url'),
                                 type: 'POST',
@@ -170,6 +172,7 @@
                                     }
                                 },
                                 error: function (data) {
+                                    console.log(data.responseText);
                                     swal({
                                         title: data.responseText,
                                         type: "error",
@@ -182,6 +185,13 @@
             });
         });
 
+        function setDatetimepicker(){
+            $('#publish_at').datetimepicker({
+                format: 'YYYY-MM-DD'
+            });
+        };
+
+        //init ueditor
         function setUeditor() {
             if($('#content').length > 0)
             {
@@ -214,18 +224,17 @@
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 cache:false,
                 datatype:'html',
-                timeout:2000,
-                success: function (data) {
-                    var content = $(data).find('.content-body').html();
-                    var sitebar = $(data).find('.nav-sidebar').html();
-                    $('.content-body').html(content);
-                    $('.nav-sidebar').html(sitebar);
-                    setUeditor();
-                },
-                error: function (data) {
-                    window.location.reload();
-                }
-            });
+                timeout:2000
+            }).done(function (data) {
+                var contentbody  = $(data).find('.content-body').html();
+                var sitebar      = $(data).find('.nav-sidebar').html();
+                $('.content-body').html(contentbody);
+                $('.nav-sidebar').html(sitebar);
+                setUeditor();
+                setDatetimepicker();
+            }).fail(function (data) {
+                window.location.reload();
+            })
         });
 
         window.addEventListener("popstate", function()
@@ -237,17 +246,16 @@
                 cache:false,
                 datatype:'html',
                 timeout:2000,
-                success: function (data) {
-                    var content = $(data).find('.content-body').html();
-                    var sitebar = $(data).find('.nav-sidebar').html();
-                    $('.content-body').html(content);
-                    $('.nav-sidebar').html(sitebar);
-                    setUeditor();
-                },
-                error: function (data) {
-                    window.location.reload();
-                }
-            });
+            }).done(function (data) {
+                var contentbody = $(data).find('.content-body').html();
+                var sitebar     = $(data).find('.nav-sidebar').html();
+                $('.content-body').html(contentbody);
+                $('.nav-sidebar').html(sitebar);
+                setUeditor();
+                setDatetimepicker();
+            }).fail(function (data) {
+                window.location.reload();
+            })
         });
     })();
 </script>

@@ -23,8 +23,37 @@ class NewsRequest extends FormRequest
      */
     public function rules()
     {
+        switch($this->method())
+        {
+            case 'POST':
+            case 'PUT':
+            case 'PATCH':
+            {
+                return [
+                    'title'    =>   'required|min:3',
+                    'content'  =>   'required|min:3',
+                    'publish'  =>   'required|date'
+                ];
+            }
+            case 'DELETE':
+            {
+                return [
+                    'ids'   => 'required|array',
+                    'ids.*' => 'integer'
+                ];
+            }
+            case 'GET':
+            default:
+            {
+                return [];
+            }
+        }
+    }
+
+    public function messages()
+    {
         return [
-            //
+
         ];
     }
 }

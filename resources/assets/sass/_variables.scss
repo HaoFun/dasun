@@ -25,7 +25,8 @@ $text-color: #636b6f;
 
 // Navbar
 $navbar-default-bg: #fff;
-
+$navbar-default-border: #000000;
+$navbar-border-radius:0px;
 // Buttons
 $btn-default-color: $text-color;
 
@@ -40,8 +41,8 @@ $panel-default-text:#ffffff;
 
 
 //navbar
-$navbar-default-toggle-border-color:#181D3B;
-$navbar-default-toggle-icon-bar-bg:#181D3B;
+$navbar-default-toggle-border-color:#ffffff;
+$navbar-default-toggle-icon-bar-bg:#ffffff;
 // Pagination
 $pagination-color:#181D3B;
 $pagination-hover-color:#ffffff;

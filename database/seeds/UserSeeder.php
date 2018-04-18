@@ -16,7 +16,8 @@ class UserSeeder extends Seeder
         \App\User::insert($user_array);
 
         $user = \App\User::find(1);
-        $user->name = 'Hao';
+        $user->name = 'Admin';
+        $user->email = 'admin@exsample.com';
         $user->save();
     }
 }

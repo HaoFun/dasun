@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(NewsSeeder::class);
         $this->call(SettingSeeder::class);
-        $this->call(BannerSeeder::class);
         $this->call(ModuleSeeder::class);
+        $this->call(BannerSeeder::class);
         \Illuminate\Database\Eloquent\Model::reguard();
     }
 }

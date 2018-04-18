@@ -1,51 +1,41 @@
 @extends('layouts.admin')
 @section('content')
-    <div>
+    <div class="content-body">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                橫幅圖片
+            <div class="panel-heading">Image</div>
+            <div>
+                <button class="btn btn-danger pull-right col-md-2 delete_all" style="margin: 10px 5px 10px 0" type="button" data-url="{{ route('admin.banner.destroy') }}" data-ajax="{{ route('admin.news.index') }}">Delete</button>
             </div>
-            <a href="{{ route('admin.banner.create') }}" style="margin: 10px 5px 10px 0" class="btn btn-primary pull-right col-md-2">新增橫幅圖片</a>
+            <a role="ajax" href="{{ route('admin.banner.create') }}" style="margin: 10px 5px 10px 0" class="btn btn-primary pull-right col-md-2">Create</a>
             <div class="panel-body">
                 <table class="table table-bordered" >
                     <tr>
-                        <th style="width: 10%" class="text-center">對應標題</th>
-                        <th style="width: 75%" class="hidden-xs text-center">圖片</th>
-                        <th style="width: 15%" class="text-center">操作</th>
+                        <th style="width: 10%" class="text-center"><input type="checkbox" class="delete_toggle" style="zoom: 1.2"></th>
+                        <th style="width: 25%" class="text-center">Title</th>
+                        <th style="width: 50%" class="text-center">Image</th>
+                        <th style="width: 15%" class="text-center">Done</th>
                     </tr>
                     @if(Auth::check())
                         @foreach($banners as $banner)
                             <tr>
                                 <td class="text-center">
-                                    {{ $banner->banner_title }}
+                                    <input type="checkbox" class="delete_list" name="delete_list[]" style="zoom: 1.2;margin: 10px 0 0 0" value="{{ $banner->id }}">
                                 </td>
-                                <td class="hidden-xs text-center">
-                                    <div style="white-space:nowrap;overflow:auto">
-                                        <div style="width: auto;height:180px" class="pull-left">
-                                            @if(count(unserialize(base64_decode($banner->banner_images))) !== 0)
-                                                @foreach(unserialize(base64_decode($banner->banner_images)) as $image)
-                                                    <img src="{{ asset($image).'?v='.time() }}" style="height: 180px" class="img-responsive img-thumbnail">
-                                                @endforeach
-                                            @endif
-                                        </div>
-                                    </div>
+                                <td class="text-center">
+                                    {{ str_limit($banner->module->name,30,'...') }}
+                                </td>
+                                <td class="text-center">
+                                    {{ $banner->image }}
                                 </td>
                                 <td class="text-center">
                                     <div style="margin-bottom: 3px">
-                                        <a href="{{ route('admin.banner.edit',$banner->id) }}"  type="button" class="btn btn-success form-control">編　輯</a>
-                                    </div>
-                                    <div>
-                                        <form action="{{ route('admin.banner.destroy',$banner->id) }}" method="post" class="delete-form">
-                                            {{ method_field('DELETE') }}
-                                            {{ csrf_field() }}
-                                            <button class="btn btn-danger form-control" type="button" onclick="ConfirmDelete(this)">刪　除</button>
-                                        </form>
+                                        <a role="ajax" href="{{ route('admin.banner.edit',$banner->id) }}"  type="button" class="btn btn-success form-control">Edit</a>
                                     </div>
                                 </td>
                             </tr>
                         @endforeach
+                    @endif
                 </table>
-                @endif
                 <div class="Pages text-center">
                     {!! $banners->links() !!}
                 </div>

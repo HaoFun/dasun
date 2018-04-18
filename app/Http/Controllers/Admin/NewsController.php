@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Repositories\AdminRepository;
 use App\Http\Requests\NewsRequest;
 use App\News;
-use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
     protected $repository;
     protected $news_model;
+    protected $type = ['最新消息', '最新公告', '最新宣導', '最新活動'];
     public function __construct(AdminRepository $repository,News $news_model)
     {
         $this->middleware(['auth']);
@@ -21,7 +21,7 @@ class NewsController extends Controller
 
     protected function index($type='default')
     {
-        $news = $this->repository->getModelAllByPaginate($this->news_model,10,'publish_at');
+        $news = $this->repository->getModelAllByPaginate($this->news_model,10,'publish_at',true);
         if($type === 'ajax')
         {
             return view('admin.news.index',compact('news'))->render();
@@ -31,14 +31,16 @@ class NewsController extends Controller
 
     protected function create()
     {
-        return view('admin.news.create');
+        $type = $this->type;
+        return view('admin.news.create',compact('type'));
     }
 
     protected function store(NewsRequest $request)
     {
         $data = [
             'title'  =>  request('title'),
-            'body'   =>  request('body')
+            'publish_at' => request('publish_at'),
+            'content'   =>  request('content')
         ];
         $this->repository->createModel($this->news_model,$data);
         return Redirect()->route('admin.news.index')->with(['message' => 'Add News Success']);
@@ -46,29 +48,30 @@ class NewsController extends Controller
 
     protected function edit($id)
     {
+        $type = $this->type;
         $news = $this->repository->getModelID($this->news_model,$id);
-        return view('admin.news.edit',compact('news'));
+        return view('admin.news.edit',compact('news','type'));
     }
 
     protected function update(NewsRequest $request,$id)
     {
-        $news = $this->repository->getModelID($this->news_model,$id);
         $data = [
             'title'  =>  request('title'),
-            'body'   =>  request('body')
+            'publish_at' => request('publish_at'),
+            'content'   =>  request('content')
         ];
-        $this->repository->updateModel($this->news_model,$news,$data);
-        return Redirect()->route('admin.news.index');
+        $this->repository->updateModel($this->news_model,$id,$data);
+        return Redirect()->route('admin.news.index')->with(['message' => 'Update News Success']);
     }
 
-    protected function destroy(Request $request)
+    protected function destroy(NewsRequest $request)
     {
         $ids = request('ids');
         if(!empty($ids))
         {
             $this->repository->deleteModel($this->news_model,$ids);
-            return response()->json(['status' => true, 'message'=>"刪除成功!",'data'=>$this->index('ajax')]);
+            return response()->json(['status' => true, 'message'=>"Delete Success!",'data'=>$this->index('ajax')]);
         }
-        return response()->json(['status' => false, 'message'=>"刪除失敗，請重試!"]);
+        return response()->json(['status' => false, 'message'=>"Delete Error! Please try again"]);
     }
 }

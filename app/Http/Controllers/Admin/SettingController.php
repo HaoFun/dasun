@@ -17,15 +17,15 @@ class SettingController extends Controller
         $this->setting = $setting;
     }
 
-    protected function edit($id)
+    protected function edit()
     {
-        $setting = $this->repository->getModelID($this->setting,$id);
+        $setting = $this->repository->getModelID($this->setting,$this->repository->getModelFirst($this->setting)->id);
         return view('admin.setting.edit',compact('setting'));
     }
 
     protected function update(SettingRequest $request,$id)
     {
-        $setting = $this->repository->getModelID($this->setting,$id);
+        $id = $this->repository->getModelFirst($this->setting)->id;
         $data = [
             'config_name'  => request('config_name'),
             'config_phone' => request('config_phone'),
@@ -36,7 +36,7 @@ class SettingController extends Controller
             'description'  => request('description'),
             'keywords'     => request('keywords')
         ];
-        $this->repository->updateModel($setting,$data);
-        return redirect()->route('root');
+        $this->repository->updateModel($this->setting,$id,$data);
+        return redirect()->route('root')->with(['message' => 'Update Setting Success!']);
     }
 }
