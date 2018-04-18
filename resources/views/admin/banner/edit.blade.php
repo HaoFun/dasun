@@ -24,7 +24,7 @@
                             <br>
                             <img class="thumbnail img-responsive" src="{{ $banner->image }}" style="height:200px;max-width:100%" alt="{{ $banner->module->name.'-image' }}">
                         @endif
-                        <input type="file" id="image" name="banner_image" class="btn btn-default form-control">
+                        <input type="file" id="image" name="image" class="btn btn-default form-control">
                     </div>
                     <button class="btn btn-primary pull-right col-md-2" type="submit">Submit</button>
                 </form>

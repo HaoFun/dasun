@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SettingSeeder::class);
         $this->call(ModuleSeeder::class);
         $this->call(BannerSeeder::class);
+        $this->call(QuestionSeeder::class);
         \Illuminate\Database\Eloquent\Model::reguard();
     }
 }
