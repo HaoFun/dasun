@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class ErrorPageController extends Controller
 {
     public function Error401()
@@ -16,8 +18,9 @@ class ErrorPageController extends Controller
     {
         return abort('403');
     }
-    public function Error404()
+    public function Error404(Request $request)
     {
+        dd($request);
         return abort('404');
     }
     public function Error405()

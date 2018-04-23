@@ -7,7 +7,7 @@
     <link href="{{ url('images/ico.ico') }}" rel="SHORTCUT ICON">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title','Dasun')</title>
+    <title>@yield('title','達盛興汽車後台系統')</title>
     <meta name="description" content="@yield('description','Dasun')">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -18,8 +18,8 @@
     <div class="sidebar" data-active-color="orange" data-background-color="black">
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a role="ajax" href="{{ url('/') }}" class="simple-text">
-                    <img width="200px" src="{{ asset('images/logo_erp.png') }}" alt="Logo">
+                <a role="ajax" href="{{ route('admin.user.index') }}" class="simple-text">
+                    <img width="200px" src="{{ asset('images/LOGO.png') }}" alt="Logo">
                 </a>
             </div>
             <ul class="nav nav-sidebar">
@@ -27,7 +27,7 @@
             </ul>
         </div>
     </div>
-    <div class="main-panel ">
+    <div class="main-panel">
         <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -39,18 +39,23 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <img style="margin-top: -8px;height: 40px" src="{{ asset('images/logo_erp.png') }}" alt="ERP">
+                        <img style="margin-top: -3px;height: 30px" src="{{ asset('images/LOGO.png') }}" alt="ERP">
                     </a>
                 </div>
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('login') }}">登入</a></li>
+                            {{--<li><a href="{{ route('register') }}">Register</a></li>--}}
                         @endif
                         @if(Auth::check())
                             <li>
-                                <a class="text-center" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i><b>Logout</b></a>
+                                <a role="button" aria-expanded="false">
+                                    <i class="fa fa-user-circle-o fa-fw"></i> {{ Auth::user()->name }}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-center" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i><b>登出</b></a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
@@ -102,6 +107,10 @@
             window.alert = function() { return swal.apply(this, arguments); };
             $('div.alert').not('.alert-important').delay(5000).fadeOut(1000);
 
+            $(document).on('click','.nav > .nav-list > a', function(){
+                $('.navbar-toggle').click();
+            });
+
             //delete all checkbox toggle
             $(document).on('change','.delete_toggle',function () {
                 if($(this).is(":checked"))
@@ -116,6 +125,10 @@
                         $(this).prop('checked',false);
                     });
                 }
+            });
+
+            $(document).on('click','a[role="ajax"]',function () {
+                $(".main-panel").animate({ scrollTop: 0 });
             });
 
             //delete all checkbox check

@@ -1,6 +1,8 @@
 {
-    "/js/app.js": "/js/app.js?id=2de9ee4477035e72a13e",
-    "/css/app.css": "/css/app.css?id=8fd0367ca546f25ecb71",
+    "/js/app.js": "/js/app.js?id=17c72c0dd08f19e4dcdd",
+    "/js/frontend/app.js": "/js/frontend/app.js?id=7a21afd7350d487ed5dc",
+    "/css/app.css": "/css/app.css?id=17e806b1f2790a128d9b",
+    "/css/frontend/app.css": "/css/frontend/app.css?id=27808d54773d1c554bbb",
     "/js/moment.js": "/js/moment.js?id=274efa1a1795f9ea00b2",
     "/js/bootstrap-datetimepicker.min.js": "/js/bootstrap-datetimepicker.min.js?id=c36d9d9bf2e248065d5d",
     "/css/bootstrap-datetimepicker.min.css": "/css/bootstrap-datetimepicker.min.css?id=dccd112584daacbdedc9"

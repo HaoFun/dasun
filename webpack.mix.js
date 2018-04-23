@@ -10,6 +10,14 @@ let mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+mix.js([
+    'resources/assets/js/frontend/jquery-1.9.1.min.js',
+    'resources/assets/js/frontend/jquery-ui-1.8.17.custom.min.js',
+    'resources/assets/js/frontend/min.js'
+],'public/js/frontend/app.js').version();
+mix.copy('resources/assets/css/frontend/layout.css','public/css/frontend/app.css').version();
+
+
 
 mix.js([
         'resources/assets/js/app.js',

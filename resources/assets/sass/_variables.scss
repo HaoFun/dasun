@@ -10,11 +10,11 @@ $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
 // Brands
-$brand-primary: #3097D1;
+$brand-primary: #3097d1;
 $brand-info: #8eb4cb;
-$brand-success: #2ab27b;
+$brand-success: #21b26c;
 $brand-warning: #cbb956;
-$brand-danger: #bf5329;
+$brand-danger: #bf312a;
 
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
@@ -24,9 +24,10 @@ $line-height-base: 1.6;
 $text-color: #636b6f;
 
 // Navbar
-$navbar-default-bg: #fff;
+$navbar-default-bg: #000000;
 $navbar-default-border: #000000;
 $navbar-border-radius:0px;
+
 // Buttons
 $btn-default-color: $text-color;
 
@@ -39,15 +40,15 @@ $input-color-placeholder: lighten($text-color, 30%);
 $panel-default-heading-bg: #181D3B;
 $panel-default-text:#ffffff;
 
-
 //navbar
 $navbar-default-toggle-border-color:#ffffff;
 $navbar-default-toggle-icon-bar-bg:#ffffff;
+
 // Pagination
 $pagination-color:#181D3B;
 $pagination-hover-color:#ffffff;
 $pagination-hover-bg:#181D3B;
-$pagination-hover-border:091358;
+$pagination-hover-border:#181D3B;
 $pagination-active-bg:#181D3B;
 $pagination-active-color:#ffffff;
 $pagination-active-border:#181D3B;

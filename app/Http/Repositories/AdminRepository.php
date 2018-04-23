@@ -11,13 +11,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class AdminRepository
 {
-    public function getModelAllByPaginate(Model $model,$num = 10,$orderby_field = 'created_at',$order_type = false)
+    public function getModelAllByPaginate(Model $model,$num = 10,$orderby_field = 'created_at',$order_type = false,$path_name)
     {
         if($order_type === false)
         {
-            return $model::orderBy($orderby_field,'ASC')->paginate($num);
+            return $model::orderBy($orderby_field,'ASC')->paginate($num)->setPath(route('admin.'.$path_name.'.index'));
         }
-        return $model::orderBy($orderby_field,'DESC')->paginate($num);
+        return $model::orderBy($orderby_field,'DESC')->paginate($num)->setPath(route('admin.'.$path_name.'.index'));
     }
 
     public function getModelAll(Model $model,$orderby_field = 'created_at',$order_type = false)
@@ -29,11 +29,11 @@ class AdminRepository
         return $model::all()->sortByDesc($orderby_field);
     }
 
-    public function getModelWith(Model $model,array $with,$painate = true,$num = 10)
+    public function getModelWith(Model $model,array $with,$path_name,$painate = true,$num = 10)
     {
         if($painate)
         {
-            return $model::with($with)->paginate($num);
+            return $model::with($with)->paginate($num)->setPath(route('admin.'.$path_name.'.index'));
         }
         return $model::with($with);
     }

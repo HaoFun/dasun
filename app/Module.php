@@ -10,6 +10,6 @@ class Module extends Model
 
     public function banner()
     {
-        return $this->belongsTo(Banner::class);
+        return $this->hasOne(Banner::class);
     }
 }

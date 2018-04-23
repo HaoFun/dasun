@@ -21,7 +21,7 @@ class NewsController extends Controller
 
     protected function index($type='default')
     {
-        $news = $this->repository->getModelAllByPaginate($this->news,10,'publish_at',true);
+        $news = $this->repository->getModelAllByPaginate($this->news,10,'publish_at',true,'news');
         if($type === 'ajax')
         {
             return view('admin.news.index',compact('news'))->render();
@@ -39,6 +39,7 @@ class NewsController extends Controller
     {
         $data = [
             'title'  =>  request('title'),
+            'type'   =>  request('type'),
             'publish_at' => request('publish_at'),
             'content'   =>  request('content')
         ];
@@ -57,6 +58,7 @@ class NewsController extends Controller
     {
         $data = [
             'title'  =>  request('title'),
+            'type'   =>  request('type'),
             'publish_at' => request('publish_at'),
             'content'   =>  request('content')
         ];

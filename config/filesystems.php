@@ -48,10 +48,15 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'ueditor' => [
+            'driver' => 'local',
+            'root'   => '/uploads/images/ueditor',
+        ],
+
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'root' => public_path('/'),
+            'url' => env('APP_URL').'/',
             'visibility' => 'public',
         ],
 

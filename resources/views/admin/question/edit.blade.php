@@ -8,20 +8,20 @@
                     {{ method_field('PATCH') }}
                     {!! csrf_field() !!}
                     <div class="form-group">
-                        <label for="question">Question</label>
+                        <label for="question">問題</label>
                         <input type="text" id="question" name="question" value="{{ $question->question }}" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="answer">Answer</label>
+                        <label for="answer">答案</label>
                         <input type="text" id="answer" name="answer" value="{{ $question->answer }}" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="order">Order</label>
+                        <label for="order">排序</label>
                         <input type="text" id="order" name="order" value="{{ $question->order }}" class="form-control">
                     </div>
-                    <button class="btn btn-primary pull-right col-md-2" type="submit">Submit</button>
+                    <button class="btn btn-primary pull-right col-md-2" type="submit">確 認</button>
                 </form>
             </div>
         </div>

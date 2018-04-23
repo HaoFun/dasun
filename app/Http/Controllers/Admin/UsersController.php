@@ -20,7 +20,7 @@ class UsersController extends Controller
 
     protected function index($type = 'default')
     {
-        $users = $this->repository->getModelAllByPaginate($this->user,10,'created_at',true);
+        $users = $this->repository->getModelAllByPaginate($this->user,10,'created_at',true,'user');
         if($type === 'ajax')
         {
             return view('admin.user.index',compact('users'))->render();

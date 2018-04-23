@@ -2,20 +2,21 @@
 @section('content')
     <div class="content-body">
         <div class="panel panel-default">
-            <div class="panel-heading">News</div>
+            <div class="panel-heading">最新消息</div>
             <div>
                 <button class="btn btn-danger pull-right col-md-2 delete_all" style="margin: 10px 5px 10px 0" type="button" data-url="{{ route('admin.news.destroy') }}" data-ajax="{{ route('admin.news.index') }}">Delete</button>
             </div>
             <a role="ajax" href="{{ route('admin.news.create') }}" style="margin: 10px 5px 10px 0" class="btn btn-primary pull-right col-md-2">Create</a>
+            <a href="{{ route('admin.call_artisan') }}" style="margin: 10px 5px 10px 0" class="btn btn-success pull-right col-md-2">Get Data</a>
             <div class="panel-body">
                 <table class="table table-bordered" >
                     <tr>
                         <th style="width: 10%" class="text-center"><input type="checkbox" class="delete_toggle" style="zoom: 1.2"></th>
-                        <th style="width: 20%" class="hidden-xs text-center">Publish At</th>
-                        <th style="width: 20%" class="text-center">Title</th>
-                        <th style="width: 10%" class="text-center">Type</th>
-                        <th style="width: 25%" class="hidden-xs text-center">Content</th>
-                        <th style="width: 15%" class="text-center">Done</th>
+                        <th style="width: 20%" class="hidden-xs text-center">發佈時間</th>
+                        <th style="width: 20%" class="text-center">消息標題</th>
+                        <th style="width: 10%" class="text-center">消息類型</th>
+                        <th style="width: 25%" class="hidden-xs text-center">消息內容</th>
+                        <th style="width: 15%" class="text-center">操作</th>
                     </tr>
                     @if(Auth::check())
                         @foreach($news as $value)

@@ -68,14 +68,17 @@ class SpiderCommand extends Command
                     if($from)
                     {
                         $from_explode = explode("　",$from);
+                        $now = Carbon::now();
                         $data = [
                             'title'        => $title,
                             'type'         => $type_name,
                             'from'         => isset($from_explode) && count($from_explode) === 2 ? $from_explode[0]:null,
                             'from_url'     => $from_url,
                             'from_publish' => isset($from_explode) && count($from_explode) === 2 ? $from_explode[1]:null,
-                            'content'      => $article->filterXPath('div[@id="article"]/div[2]')->text(),
-                            'publish_at'   => isset($find_date) ? str_replace($find_date,(int)$find_date + 1911,$resultDate[0]):Carbon::now()->toDateString()
+                            'content'      => $article->filterXPath('div[@id="article"]/div[2]')->html(),
+                            'publish_at'   => isset($find_date) ? str_replace($find_date,(int)$find_date + 1911,$resultDate[0]):Carbon::now()->toDateString(),
+                            'created_at'   => $now,
+                            'updated_at'   => $now
                         ];
                         DB::table('news')->insert($data);
                         $this->info("{$title}爬取成功!");

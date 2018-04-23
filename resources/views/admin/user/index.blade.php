@@ -2,7 +2,7 @@
 @section('content')
     <div class="content-body">
         <div class="panel panel-default">
-            <div class="panel-heading">Admin</div>
+            <div class="panel-heading">管理者</div>
             <div>
                 <button class="btn btn-danger pull-right col-md-2 delete_all" style="margin: 10px 5px 10px 0" type="button" data-url="{{ route('admin.user.destroy') }}" data-ajax="{{ route('admin.user.index') }}">Delete</button>
             </div>
@@ -11,10 +11,10 @@
                 <table class="table table-bordered" >
                     <tr>
                         <th style="width: 10%" class="text-center"><input type="checkbox" class="delete_toggle" style="zoom: 1.2"></th>
-                        <th style="width: 20%" class="text-center">Name</th>
-                        <th style="width: 30%" class="hidden-xs text-center">Email</th>
-                        <th style="width: 25%" class="hidden-xs hidden-sm text-center">Rigster</th>
-                        <th style="width: 15%;" class="text-center">Done</th>
+                        <th style="width: 20%" class="text-center">名稱</th>
+                        <th style="width: 30%" class="hidden-xs text-center">E-mail</th>
+                        <th style="width: 25%" class="hidden-xs hidden-sm text-center">新增時間</th>
+                        <th style="width: 15%;" class="text-center">操作</th>
                     </tr>
                     @if(Auth::check())
                         @foreach($users as $user)

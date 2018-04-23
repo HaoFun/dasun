@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -44737,22 +44737,14 @@ var require;var require;var __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof S
 
 /***/ }),
 
-/***/ "./resources/assets/sass/app.scss":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__("./resources/assets/js/app.js");
 __webpack_require__("./resources/assets/js/material.min.js");
 __webpack_require__("./resources/assets/js/perfect-scrollbar.jquery.min.js");
 __webpack_require__("./resources/assets/js/material-dashboard.js");
-__webpack_require__("./resources/assets/js/sweetalert.min.js");
-module.exports = __webpack_require__("./resources/assets/sass/app.scss");
+module.exports = __webpack_require__("./resources/assets/js/sweetalert.min.js");
 
 
 /***/ })

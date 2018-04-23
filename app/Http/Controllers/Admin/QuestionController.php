@@ -20,7 +20,7 @@ class QuestionController extends Controller
 
     protected function index($type='default')
     {
-        $questions = $this->repository->getModelAllByPaginate($this->question,10,'order',false);
+        $questions = $this->repository->getModelAllByPaginate($this->question,10,'order',false,'question');
         if($type === 'ajax')
         {
             return view('admin.question.index',compact('questions'))->render();

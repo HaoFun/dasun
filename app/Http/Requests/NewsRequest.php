@@ -30,9 +30,9 @@ class NewsRequest extends FormRequest
             case 'PATCH':
             {
                 return [
-                    'title'    =>   'required|min:3',
-                    'content'  =>   'required|min:3',
-                    'publish'  =>   'required|date'
+                    'title'       =>   'required',
+                    'content'     =>   'required',
+                    'publish_at'  =>   'required|date'
                 ];
             }
             case 'DELETE':
@@ -53,7 +53,13 @@ class NewsRequest extends FormRequest
     public function messages()
     {
         return [
-
+            'title.required'   =>  '必須填寫最新消息標題',
+            'content.required' =>  '必須填寫最新消息內容',
+            'publish_at.required' => '必須填寫發佈日期',
+            'publish_at.date'     => '發佈日期格式錯誤',
+            'ids.required'      => '必須選擇刪除的資料',
+            'ids.array'         => '刪除數據有誤，請重試',
+            'ids.*.integer'     => '刪除數據有誤，請重試'
         ];
     }
 }

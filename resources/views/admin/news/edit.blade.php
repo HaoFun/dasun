@@ -8,12 +8,12 @@
                     {{ method_field('PATCH') }}
                     {!! csrf_field() !!}
                     <div class="form-group">
-                        <label for="title">Title</label>
+                        <label for="title">消息標題</label>
                         <input type="text" id="title" name="title" value="{{ $news->title }}" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="type">Type</label>
+                        <label for="type">消息類型</label>
                         <select name="type" id="type" class="form-control" required>
                             <option value="" hidden disabled selected>Choose Type</option>
                             @foreach($type as $value)
@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="publist_at">Publish At</label>
+                        <label for="publist_at">發佈時間</label>
                         <div class="input-group date">
                             <span class="input-group-addon" >
                                 <span class="glyphicon glyphicon-calendar"></span>
@@ -33,10 +33,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="title">Content</label>
+                        <label for="title">消息內容</label>
                         <textarea id="content" name="content" style="height: 200px">{!! $news->content !!}</textarea >
                     </div>
-                    <button class="btn btn-primary pull-right col-md-2" type="submit">Submit</button>
+                    <button class="btn btn-primary pull-right col-md-2" type="submit">確 認</button>
                 </form>
             </div>
         </div>

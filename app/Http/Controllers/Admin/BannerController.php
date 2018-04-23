@@ -11,7 +11,6 @@ use App\Module;
 
 class BannerController extends Controller
 {
-    //1280X437
     public $banner;
     public $repository;
     public $uploader;
@@ -30,7 +29,7 @@ class BannerController extends Controller
 
     public function index($type='default')
     {
-        $banners = $this->repository->getModelWith($this->banner,['module']);
+        $banners = $this->repository->getModelWith($this->banner,['module'],'banner');
         if($type === 'ajax')
         {
             return view('admin.banner.index',compact('banners'))->render();

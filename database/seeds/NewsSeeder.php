@@ -11,7 +11,8 @@ class NewsSeeder extends Seeder
      */
     public function run()
     {
-        $news = factory(\App\News::class)->times(30)->make();
-        \App\News::insert($news->toArray());
+//        $news = factory(\App\News::class)->times(30)->make();
+//        \App\News::insert($news->toArray());
+        \Illuminate\Support\Facades\Artisan::call('dasun:spider-data');
     }
 }

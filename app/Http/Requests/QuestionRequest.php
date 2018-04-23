@@ -32,7 +32,7 @@ class QuestionRequest extends FormRequest
                     return [
                         'question' =>   'required|min:3',
                         'answer'   =>   'required|min:3',
-                        'order'    =>   'integer'
+                        'order'    =>   'required|integer'
                     ];
                 }
             case 'DELETE':
@@ -53,7 +53,15 @@ class QuestionRequest extends FormRequest
     public function messages()
     {
         return [
-
+            'question.required' => '必須填寫問題',
+            'question.min'      => '問題長度必須大於3字元',
+            'answer.required'   => '必須填寫回答',
+            'answer.min'        => '回答長度必須大於3字元',
+            'order.required'    => '必須填寫排序數字',
+            'order.integer'     => '排序格式有誤，請重試',
+            'ids.required'      => '必須選擇刪除的資料',
+            'ids.array'         => '刪除數據有誤，請重試',
+            'ids.*.integer'     => '刪除數據有誤，請重試'
         ];
     }
 }
